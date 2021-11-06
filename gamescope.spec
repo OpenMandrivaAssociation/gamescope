@@ -1,5 +1,3 @@
-%global libliftoff_minver 0.1.0
-
 Name:           gamescope
 Version:        3.9.5
 Release:        1
@@ -21,6 +19,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
