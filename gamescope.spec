@@ -9,6 +9,7 @@ Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-
 
 BuildRequires:  meson
 BuildRequires:  ninja
+BuildRequires:  git
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xcomposite)
