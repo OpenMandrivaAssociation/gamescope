@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig(wlroots)
 #BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 #BuildRequires:  /usr/bin/glslangValidator
+BuildRequires:  stb-devel
 
 #Requires:       libliftoff
 Requires:       xorg-x11-server-Xwayland
