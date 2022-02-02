@@ -49,7 +49,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %autosetup -p1
 
 %build
-%meson
+%meson -Dwrap_mode=nodownload
 %meson_build
 
 %install
