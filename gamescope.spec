@@ -49,8 +49,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %autosetup -p1
 
 %build
-%meson  \ 
-        -Dforce_fallback_for=wlroots
+%meson
 %meson_build
 
 %install
