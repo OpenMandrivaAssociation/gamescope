@@ -49,6 +49,8 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %autosetup -p1
 
 %build
+sed -i '\/stb/d' meson.build
+sed -i '\/force_fallback/d' meson.build # NO!
 %meson
 %meson_build
 
