@@ -50,7 +50,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 
 %build
 %meson  \ 
-        -Dpipewire=enabled
+        -Dforce_fallback_for=wlroots
 %meson_build
 
 %install
