@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
-#BuildRequires:  /usr/bin/glslangValidator
+BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
 
 #Requires:       libliftoff
