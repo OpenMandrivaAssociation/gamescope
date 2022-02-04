@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.9.5
+Version:        3.11.1
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -20,7 +20,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libpipewire-0.3)
+#BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -29,13 +29,12 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
-#BuildRequires:  /usr/bin/glslangValidator
+BuildRequires:  glslang
+BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
 
-#Requires:       libliftoff
-Requires:       xorg-x11-server-Xwayland
-Recommends:     mesa-dri-drivers
-Recommends:     mesa-vulkan-drivers
+Requires: %{_lib}liftoff0
+Requires: x11-server-xwayland
 
 %description
 Gamescope is the micro-compositor formerly known as steamcompmgr.
@@ -49,7 +48,9 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %autosetup -p1
 
 %build
-%meson
+#sed -i '\/stb/d' meson.build
+sed -i '\/force_fallback/d' meson.build # NO!
+%meson -Dpipewire=disabled
 %meson_build
 
 %install
