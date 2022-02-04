@@ -33,10 +33,8 @@ BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
 
-#Requires:       libliftoff
-Requires:       xorg-x11-server-Xwayland
-Recommends:     mesa-dri-drivers
-Recommends:     mesa-vulkan-drivers
+Requires: %{_lib}liftoff0
+Requires: x11-server-xwayland
 
 %description
 Gamescope is the micro-compositor formerly known as steamcompmgr.
