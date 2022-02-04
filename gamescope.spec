@@ -52,7 +52,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %build
 sed -i '\/stb/d' meson.build
 sed -i '\/force_fallback/d' meson.build # NO!
-%meson
+%meson -Dpipewire=disabled
 %meson_build
 
 %install
