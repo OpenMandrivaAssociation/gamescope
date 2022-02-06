@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.11.1
+Version:        3.11.5
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
