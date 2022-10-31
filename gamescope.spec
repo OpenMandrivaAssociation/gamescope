@@ -1,6 +1,6 @@
 Name:           gamescope
 Version:        3.11.48
-Release:        1
+Release:        2
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
@@ -20,7 +20,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(libdrm)
-#BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -50,7 +50,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %build
 #sed -i '\/stb/d' meson.build
 sed -i '\/force_fallback/d' meson.build # NO!
-%meson -Dpipewire=disabled
+%meson -Dpipewire=enabled
 %meson_build
 
 %install
