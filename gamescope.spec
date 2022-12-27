@@ -6,6 +6,7 @@ Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -47,6 +48,13 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 %prep
 %autosetup -p1
 
+pushd subprojects
+rm -rf vkroots
+tar xf %{SOURCE1}
+mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a vkroots
+popd
+
+
 %build
 #sed -i '\/stb/d' meson.build
 sed -i '\/force_fallback/d' meson.build # NO!
@@ -60,3 +68,5 @@ sed -i '\/force_fallback/d' meson.build # NO!
 %license LICENSE
 %doc README.md
 %{_bindir}/gamescope
+%{_libdir}/libVkLayer_FROG_gamescope_wsi.so
+%{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.json
