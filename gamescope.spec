@@ -6,6 +6,7 @@ Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/e6b89494142eec0ac6061f82a947d2f1246d3d7a.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -45,7 +46,9 @@ When it does need to composite with the GPU, it does so with async Vulkan comput
 meaning you get to see your frame quick even if the game already has the GPU busy with the next frame.
 
 %prep
-%autosetup -p1
+%setup -q -a 1
+mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a subprojects/vkroots
+
 
 %build
 #sed -i '\/stb/d' meson.build
