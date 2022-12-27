@@ -47,7 +47,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 
 %prep
 %setup -q -a 1
-mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a subprojects/vkroots
+mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a subprojects/vkroots/
 
 
 %build
