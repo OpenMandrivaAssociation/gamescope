@@ -46,8 +46,13 @@ When it does need to composite with the GPU, it does so with async Vulkan comput
 meaning you get to see your frame quick even if the game already has the GPU busy with the next frame.
 
 %prep
-%setup -q -a 1
-mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a subprojects/vkroots/
+%autosetup -p1
+
+pushd subprojects
+rm -rf vkroots
+tar xf %{SOURCE1}
+mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a vkroots
+popd
 
 
 %build
