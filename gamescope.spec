@@ -11,6 +11,7 @@ Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-e6b8949
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  git
+BuildRequires:  hwdata
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xcomposite)
