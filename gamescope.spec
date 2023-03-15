@@ -1,6 +1,6 @@
 Name:           gamescope
 Version:        3.11.51
-Release:        1
+Release:        2
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
