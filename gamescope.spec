@@ -1,12 +1,12 @@
 Name:           gamescope
-Version:        3.11.51
-Release:        2
+Version:        3.12.0
+Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-26757103dde8133bab432d172b8841df6bb48155.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -52,7 +52,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a vkroots
+mv vkroots-26757103dde8133bab432d172b8841df6bb48155 vkroots
 popd
 
 
