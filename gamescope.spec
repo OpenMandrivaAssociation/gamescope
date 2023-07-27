@@ -59,7 +59,9 @@ popd
 %build
 #sed -i '\/stb/d' meson.build
 sed -i '\/force_fallback/d' meson.build # NO!
-%meson -Dpipewire=enabled
+%meson   \
+          -Dpipewire=enabled \
+          -Denable_openvr_support=false
 %meson_build
 
 %install
