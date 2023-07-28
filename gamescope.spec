@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
