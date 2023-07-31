@@ -71,6 +71,9 @@ sed -i '\/force_fallback/d' meson.build # NO!
 %install
 %meson_install
 
+rm -f %{_buildroot}/%{datadir}/include/vkroots.h
+rm -f %{_buildroot}/%{libdir}/lib64/pkgconfig/vkroots.pc
+
 %files
 %license LICENSE
 %doc README.md
