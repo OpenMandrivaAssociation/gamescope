@@ -12,6 +12,7 @@ BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  git
 BuildRequires:  hwdata
+BuildRequires:  pkgconfig(benchmark)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
