@@ -68,11 +68,11 @@ sed -i '\/force_fallback/d' meson.build # NO!
           -Denable_openvr_support=false
 %meson_build
 
-rm -f %{_buildroot}/%{_includedir}/vkroots.h
-rm -f %{_buildroot}/%{_libdir}/pkgconfig/vkroots.pc
-
 %install
 %meson_install
+
+rm -f %{_buildroot}/%{_includedir}/vkroots.h
+rm -f %{_buildroot}/%{_libdir}/pkgconfig/vkroots.pc
 
 %files
 %license LICENSE
