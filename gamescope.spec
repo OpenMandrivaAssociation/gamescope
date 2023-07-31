@@ -1,20 +1,23 @@
 Name:           gamescope
-Version:        3.11.51
-Release:        2
+Version:        3.12.0
+Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-26757103dde8133bab432d172b8841df6bb48155.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  git
 BuildRequires:  hwdata
+BuildRequires:  pkgconfig(benchmark)
+BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
@@ -31,6 +34,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
@@ -52,14 +56,16 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-e6b89494142eec0ac6061f82a947d2f1246d3d7a vkroots
+mv vkroots-26757103dde8133bab432d172b8841df6bb48155 vkroots
 popd
 
 
 %build
 #sed -i '\/stb/d' meson.build
 sed -i '\/force_fallback/d' meson.build # NO!
-%meson -Dpipewire=enabled
+%meson   \
+          -Dpipewire=enabled \
+          -Denable_openvr_support=false
 %meson_build
 
 %install
@@ -70,4 +76,4 @@ sed -i '\/force_fallback/d' meson.build # NO!
 %doc README.md
 %{_bindir}/gamescope
 %{_libdir}/libVkLayer_FROG_gamescope_wsi.so
-%{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.json
+%{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
