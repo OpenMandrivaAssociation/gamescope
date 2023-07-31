@@ -68,8 +68,8 @@ sed -i '\/force_fallback/d' meson.build # NO!
           -Denable_openvr_support=false
 %meson_build
 
-rm -f %{_buildroot}/%{datadir}/include/vkroots.h
-rm -f %{_buildroot}/%{libdir}/lib64/pkgconfig/vkroots.pc
+rm -f %{_buildroot}/%{_datadir}/include/vkroots.h
+rm -f %{_buildroot}/%{_libdir}/lib64/pkgconfig/vkroots.pc
 
 %install
 %meson_install
@@ -80,5 +80,5 @@ rm -f %{_buildroot}/%{libdir}/lib64/pkgconfig/vkroots.pc
 %{_bindir}/gamescope
 %{_libdir}/libVkLayer_FROG_gamescope_wsi.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
-%exclude %{datadir}/include/vkroots.h
-%exclude %{libdir}/lib64/pkgconfig/vkroots.pc
+#exclude %{datadir}/include/vkroots.h
+#exclude %{libdir}/lib64/pkgconfig/vkroots.pc
