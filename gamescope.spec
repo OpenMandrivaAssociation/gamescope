@@ -76,4 +76,4 @@ sed -i '\/force_fallback/d' meson.build # NO!
 %doc README.md
 %{_bindir}/gamescope
 %{_libdir}/libVkLayer_FROG_gamescope_wsi.so
-%{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.json
+#{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.json
