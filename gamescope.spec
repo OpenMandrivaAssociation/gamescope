@@ -80,3 +80,5 @@ rm -f %{_buildroot}/%{libdir}/lib64/pkgconfig/vkroots.pc
 %{_bindir}/gamescope
 %{_libdir}/libVkLayer_FROG_gamescope_wsi.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
+%exclude %{datadir}/include/vkroots.h
+%exclude %{libdir}/lib64/pkgconfig/vkroots.pc
