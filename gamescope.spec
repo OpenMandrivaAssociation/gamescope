@@ -11,6 +11,8 @@ Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-26757103dde8133bab432d172b8841df6bb48155.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
 
+Patch0:         0001-cstdint.patch
+
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  git
@@ -68,6 +70,8 @@ rm -rf reshade
 tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
 popd
+
+%autopatch -p1
 
 # Replace spirv-headers include with the system directory            
 sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
