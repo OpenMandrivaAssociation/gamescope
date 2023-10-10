@@ -9,7 +9,7 @@ License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-26757103dde8133bab432d172b8841df6bb48155.tar.gz
-Source2:        https://github.com/Joshua-Ashton/reshade/archive/4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
+Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  ninja
