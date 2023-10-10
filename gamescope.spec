@@ -64,7 +64,7 @@ popd
 # Push in reshade from sources instead of submodule            
 pushd src
 rm -rf reshade
-tar xf %{source2}
+tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
 popd
 
