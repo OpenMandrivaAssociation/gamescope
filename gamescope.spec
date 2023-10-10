@@ -7,6 +7,9 @@ License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-26757103dde8133bab432d172b8841df6bb48155.tar.gz
+Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
+
+Patch0:         0001-cstdint.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -29,6 +32,7 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
@@ -51,14 +55,24 @@ When it does need to composite with the GPU, it does so with async Vulkan comput
 meaning you get to see your frame quick even if the game already has the GPU busy with the next frame.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a2 -N
 
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
 mv vkroots-26757103dde8133bab432d172b8841df6bb48155 vkroots
 popd
+# Push in reshade from sources instead of submodule            
+pushd src
+rm -rf reshade
+tar xf %{SOURCE2}
+mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
+popd
 
+%autopatch -p1
+
+# Replace spirv-headers include with the system directory            
+sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
 
 %build
 #sed -i '\/stb/d' meson.build
@@ -78,7 +92,7 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/vkroots.pc
 %license LICENSE
 %doc README.md
 %{_bindir}/gamescope
-%{_libdir}/libVkLayer_FROG_gamescope_wsi.so
+%{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 #exclude %{datadir}/include/vkroots.h
 #exclude %{libdir}/lib64/pkgconfig/vkroots.pc
