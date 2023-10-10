@@ -1,5 +1,3 @@
-%global reshade_commit 4245743a8c41abbe3dc73980c1810fe449359bf1
-
 Name:           gamescope
 Version:        3.12.7
 Release:        1
@@ -94,7 +92,7 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/vkroots.pc
 %license LICENSE
 %doc README.md
 %{_bindir}/gamescope
-%{_libdir}/libVkLayer_FROG_gamescope_wsi.so
+%{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 #exclude %{datadir}/include/vkroots.h
 #exclude %{libdir}/lib64/pkgconfig/vkroots.pc
