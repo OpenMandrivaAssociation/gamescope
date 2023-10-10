@@ -62,7 +62,11 @@ tar xf %{SOURCE1}
 mv vkroots-26757103dde8133bab432d172b8841df6bb48155 vkroots
 popd
 # Push in reshade from sources instead of submodule            
-rm -rf src/reshade && mv reshade-%{reshade_commit} src/reshade
+pushd src
+rm -rf reshade
+tar xf %{source2}
+mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
+popd
 
 
 %build
