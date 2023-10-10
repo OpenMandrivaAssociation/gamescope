@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wlroots)
@@ -68,6 +69,8 @@ tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
 popd
 
+# Replace spirv-headers include with the system directory            
+sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/meson.build
 
 %build
 #sed -i '\/stb/d' meson.build
