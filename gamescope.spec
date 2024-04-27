@@ -65,7 +65,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac vkroots
+mv vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155 vkroots
 popd
 # Push in reshade from sources instead of submodule            
 pushd src
