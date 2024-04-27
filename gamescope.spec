@@ -74,7 +74,7 @@ tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
 popd
 
-pushd src
+pushd subprojects
 rm -rf wlroots
 tar xf %{SOURCE3}
 mv wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791 wlroots
