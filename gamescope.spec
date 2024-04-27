@@ -6,8 +6,9 @@ Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
+Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
 
 Patch0:         0001-cstdint.patch
 
@@ -29,16 +30,25 @@ BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(libavif)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libeis-1.0)
+BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(wlroots)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libinput)
+# Upstream decided to fork wlroots and use unstable ver. 0.18! So we need to pull subproject
+#BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
@@ -63,13 +73,19 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac vkroots
+mv vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155 vkroots
 popd
 # Push in reshade from sources instead of submodule            
 pushd src
 rm -rf reshade
 tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
+popd
+
+pushd subprojects
+rm -rf wlroots
+tar xf %{SOURCE3}
+mv wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791 wlroots
 popd
 
 %autopatch -p1
@@ -90,6 +106,10 @@ sed -i '\/force_fallback/d' meson.build # NO!
 
 rm -rf %{buildroot}/%{_includedir}/vkroots.h
 rm -rf %{buildroot}/%{_libdir}/pkgconfig/vkroots.pc
+rm -rf %{buildroot}/usr/lib64/libwlroots.a
+rm -rf %{buildroot}/usr/lib64/pkgconfig/wlroots.pc
+rm -rf %{buildroot}/usr/include/wlr/
+
 
 %files
 %license LICENSE
