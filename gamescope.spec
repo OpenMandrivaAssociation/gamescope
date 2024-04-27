@@ -106,6 +106,10 @@ sed -i '\/force_fallback/d' meson.build # NO!
 
 rm -rf %{buildroot}/%{_includedir}/vkroots.h
 rm -rf %{buildroot}/%{_libdir}/pkgconfig/vkroots.pc
+rm -rf %{buildroot}/usr/lib64/libwlroots.a
+rm -rf %{buildroot}/usr/lib64/pkgconfig/wlroots.pc
+rm -rf %{buildroot}/usr/include/wlr/
+
 
 %files
 %license LICENSE
