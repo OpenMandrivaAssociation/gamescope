@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(libudev)
 # Upstream decided to fork wlroots and use unstable ver. 0.18! So we need to pull subproject
 #BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
