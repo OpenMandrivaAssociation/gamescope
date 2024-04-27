@@ -6,8 +6,9 @@ Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
+Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
 
 Patch0:         0001-cstdint.patch
 
@@ -38,7 +39,8 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(wlroots)
+# Upstream decided to fork wlroots and use unstable ver. 0.18! So we need to pull subproject
+#BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
@@ -70,6 +72,12 @@ pushd src
 rm -rf reshade
 tar xf %{SOURCE2}
 mv reshade-4245743a8c41abbe3dc73980c1810fe449359bf1 reshade
+popd
+
+pushd src
+rm -rf wlroots
+tar xf %{SOURCE3}
+mv wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791 wlroots
 popd
 
 %autopatch -p1
