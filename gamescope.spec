@@ -1,12 +1,12 @@
 Name:           gamescope
-Version:        3.14.7
+Version:        3.14.15
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-4245743a8c41abbe3dc73980c1810fe449359bf1.tar.gz
 Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
 
@@ -73,7 +73,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-5c217cd43ca1ceecaa6acfc93a81cdc615929155 vkroots
+mv vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540 vkroots
 popd
 # Push in reshade from sources instead of submodule            
 pushd src
