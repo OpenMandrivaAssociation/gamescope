@@ -115,6 +115,7 @@ rm -rf %{buildroot}/usr/include/wlr/
 %license LICENSE
 %doc README.md
 %{_bindir}/gamescope
+%{_bindir}/gamescopestream
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 #exclude %{datadir}/include/vkroots.h
