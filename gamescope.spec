@@ -10,7 +10,7 @@ Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
 Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
 
-Patch0:         0001-cstdint.patch
+#Patch0:         0001-cstdint.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
