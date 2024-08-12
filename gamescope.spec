@@ -97,11 +97,12 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 %build
 #sed -i '\/stb/d' meson.build
 #sed -i '\/force_fallback/d' meson.build # NO!
-sed -i '/force_fallback_for/s/libliftoff,//' meson.build
+#sed -i '/force_fallback_for/s/libliftoff,//' meson.build
 
 %meson   \
           -Dpipewire=enabled \
           -Denable_openvr_support=false
+          -Dforce_fallback_for=[]
 %meson_build
 
 %install
