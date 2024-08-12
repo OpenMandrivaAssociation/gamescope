@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
-BuildRequires:  pkgconfig(openvr)
+#BuildRequires:  pkgconfig(openvr)
 BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
@@ -104,7 +104,7 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 
 %meson   \
           -Dpipewire=enabled \
-          -Denable_openvr_support=true
+          -Denable_openvr_support=false
 %meson_build
 
 %install
