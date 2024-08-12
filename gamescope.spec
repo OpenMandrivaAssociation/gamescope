@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.14.22
+Version:        3.14.29
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -8,7 +8,7 @@ URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
-Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
+Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-4bc5333a2cbba0b0b88559f281dbde04b849e6ef.tar.gz
 
 Patch0:         0001-cstdint.patch
 
@@ -85,7 +85,7 @@ popd
 pushd subprojects
 rm -rf wlroots
 tar xf %{SOURCE3}
-mv wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791 wlroots
+mv wlroots-4bc5333a2cbba0b0b88559f281dbde04b849e6ef wlroots
 popd
 
 %autopatch -p1
