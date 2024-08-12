@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.14.22
+Version:        3.14.29
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -8,9 +8,11 @@ URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
-Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791.tar.gz
+Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-4bc5333a2cbba0b0b88559f281dbde04b849e6ef.tar.gz
 
-Patch0:         0001-cstdint.patch
+#Patch0:         0001-cstdint.patch
+# No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
+Patch1:          no-submodule-for-libliftoff.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -32,6 +34,7 @@ BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-errors)
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libpipewire-0.3)
@@ -52,6 +55,7 @@ BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
+#BuildRequires:  pkgconfig(openvr)
 BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
@@ -85,7 +89,7 @@ popd
 pushd subprojects
 rm -rf wlroots
 tar xf %{SOURCE3}
-mv wlroots-a5c9826e6d7d8b504b07d1c02425e6f62b020791 wlroots
+mv wlroots-4bc5333a2cbba0b0b88559f281dbde04b849e6ef wlroots
 popd
 
 %autopatch -p1
@@ -96,6 +100,8 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 %build
 #sed -i '\/stb/d' meson.build
 #sed -i '\/force_fallback/d' meson.build # NO!
+#sed -i '/force_fallback_for/s/libliftoff,//' meson.build
+
 %meson   \
           -Dpipewire=enabled \
           -Denable_openvr_support=false
@@ -109,6 +115,9 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/vkroots.pc
 rm -rf %{buildroot}/usr/lib64/libwlroots.a
 rm -rf %{buildroot}/usr/lib64/pkgconfig/wlroots.pc
 rm -rf %{buildroot}/usr/include/wlr/
+rm -rf %{buildroot}/%{_includedir}/wlroots-0.18/
+rm -rf %{buildroot}/%{_libdir}/libwlroots-0.18.a
+rm -rf %{buildroot}/%{_libdir}/pkgconfig/wlroots-0.18.pc
 
 
 %files
@@ -116,6 +125,8 @@ rm -rf %{buildroot}/usr/include/wlr/
 %doc README.md
 %{_bindir}/gamescope
 %{_bindir}/gamescopestream
+%{_bindir}/gamescopectl
+%{_bindir}/gamescopereaper
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 #exclude %{datadir}/include/vkroots.h
