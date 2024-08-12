@@ -11,6 +11,7 @@ Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14c
 Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-4bc5333a2cbba0b0b88559f281dbde04b849e6ef.tar.gz
 
 #Patch0:         0001-cstdint.patch
+# No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 
 BuildRequires:  meson
@@ -54,6 +55,7 @@ BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(openvr)
 BuildRequires:  glslang
 BuildRequires:  glslang-devel
 BuildRequires:  stb-devel
@@ -102,7 +104,7 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 
 %meson   \
           -Dpipewire=enabled \
-          -Denable_openvr_support=false
+          -Denable_openvr_support=true
 %meson_build
 
 %install
