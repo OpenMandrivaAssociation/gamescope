@@ -13,6 +13,7 @@ Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-54e8447
 #Patch0:         0001-cstdint.patch
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
+Patch2:          Use-system-stb-glm.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
