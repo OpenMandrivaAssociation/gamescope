@@ -1,0 +1,30 @@
+From 13e56464c86c6abb0c6a2c2785d473c6528a6488 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 15 Aug 2025 23:17:59 +0100
+Subject: [PATCH] subprojects: Bump libdisplay-info to 0.3.0
+
+---
+ src/meson.build             | 2 +-
+ subprojects/libdisplay-info | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index a3dfdabd73..c856db174e 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -33,7 +33,7 @@ wlroots_dep = dependency(
+ 
+ displayinfo_dep = dependency(
+   'libdisplay-info',
+-  version: ['>= 0.0.0', '< 0.3.0'],
++  version: ['>= 0.0.0', '< 0.4.0'],
+   fallback: ['libdisplay-info', 'di_dep'],
+   default_options: ['default_library=static'],
+ )
+diff --git a/subprojects/libdisplay-info b/subprojects/libdisplay-info
+index 66b802d05b..47a5590e9c 160000
+--- a/subprojects/libdisplay-info
++++ b/subprojects/libdisplay-info
+@@ -1 +1 @@
+-Subproject commit 66b802d05b374cd8f388dc6ad1e7ae4f08cb3300
++Subproject commit 47a5590e9c4eb35d67651b8c05a55f1a48259329
