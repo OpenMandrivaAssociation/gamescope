@@ -14,6 +14,8 @@ Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-54e8447
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 Patch2:          Use-system-stb-glm.patch
+# libdisplay-info 0.3.0
+Patch3:          https://patch-diff.githubusercontent.com/raw/ValveSoftware/gamescope/pull/1941.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
