@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.16.19
+Version:        3.16.23
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -14,6 +14,7 @@ Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-54e8447
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 Patch2:          Use-system-stb-glm.patch
+Patch3:          wlroots-fix-build-with-libinput-1.31.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -129,6 +130,7 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/wlroots-0.18.pc
 %{_bindir}/gamescopestream
 %{_bindir}/gamescopectl
 %{_bindir}/gamescopereaper
+%{_bindir}/gamescope-type
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 %{_datadir}/gamescope/scripts/
