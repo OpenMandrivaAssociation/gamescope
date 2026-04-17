@@ -130,6 +130,7 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/wlroots-0.18.pc
 %{_bindir}/gamescopestream
 %{_bindir}/gamescopectl
 %{_bindir}/gamescopereaper
+%{_bindir}/gamescope-type
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 %{_datadir}/gamescope/scripts/
