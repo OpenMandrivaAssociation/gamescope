@@ -1,5 +1,5 @@
 Name:           gamescope
-Version:        3.16.23
+Version:        3.16.24
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -8,7 +8,7 @@ URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
-Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-54e844748029d4874e14d0c086d50092c04c8899.tar.gz
+Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-c08d99437ec8bb56a703f04ad1ef199502c62d10.tar.gz
 
 #Patch0:         0001-cstdint.patch
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
@@ -92,7 +92,7 @@ popd
 pushd subprojects
 rm -rf wlroots
 tar xf %{SOURCE3}
-mv wlroots-54e844748029d4874e14d0c086d50092c04c8899 wlroots
+mv wlroots-c08d99437ec8bb56a703f04ad1ef199502c62d10 wlroots
 popd
 
 %autopatch -p1
