@@ -20,6 +20,7 @@ BuildRequires:  ninja
 BuildRequires:  git
 BuildRequires:  hwdata
 BuildRequires:  pkgconfig(benchmark)
+BuildRequires:  pkgconfig(catch2-with-main)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
