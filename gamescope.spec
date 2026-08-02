@@ -2,7 +2,7 @@
 
 Name:           gamescope
 Version:        3.16.25
-Release:        1
+Release:        2
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
@@ -134,7 +134,7 @@ rm -rf %{buildroot}/%{_libdir}/pkgconfig/wlroots-0.18.pc
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/gamescope
+%caps(CAP_SYS_NICE=pe) %{_bindir}/gamescope
 %{_bindir}/gamescopestream
 %{_bindir}/gamescopectl
 %{_bindir}/gamescopereaper
