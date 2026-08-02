@@ -1,5 +1,3 @@
--fno-cxx-modules
-
 %bcond_with wlroots
 
 Name:           gamescope
