@@ -113,7 +113,8 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 
 %meson   \
           -Dpipewire=enabled \
-          -Denable_openvr_support=false
+          -Denable_openvr_support=false \
+          -Dcpp_std=gnu++17
 %meson_build
 
 %install
