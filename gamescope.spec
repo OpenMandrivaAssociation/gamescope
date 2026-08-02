@@ -14,7 +14,7 @@ Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14c
 %if %{with wlroots}
 Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-c08d99437ec8bb56a703f04ad1ef199502c62d10.tar.gz
 %endif
-#Patch0:         0001-cstdint.patch
+Patch0:         0001-cstdint.patch
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 Patch2:          Use-system-stb-glm.patch
@@ -111,10 +111,11 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 #sed -i '\/force_fallback/d' meson.build # NO!
 #sed -i '/force_fallback_for/s/libliftoff,//' meson.build
 
+# Needed as of Clang 23 RC:  error: module declaration must not come from an #include directive 342 | module _module;
+export CXXFLAGS="%{optflags} -fno-cxx-modules"
 %meson   \
           -Dpipewire=enabled \
-          -Denable_openvr_support=false \
-          -Dcpp_std=gnu++17
+          -Denable_openvr_support=false
 %meson_build
 
 %install
