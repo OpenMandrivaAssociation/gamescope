@@ -1,5 +1,7 @@
+%bcond_with wlroots
+
 Name:           gamescope
-Version:        3.16.24
+Version:        3.16.25
 Release:        1
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
@@ -8,12 +10,15 @@ URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
+# As long as there are no problems, let's use wlroots from the system repository
+%if %{with wlroots}
 Source3:        https://github.com/Joshua-Ashton/wlroots/archive/wlroots-c08d99437ec8bb56a703f04ad1ef199502c62d10.tar.gz
-
-#Patch0:         0001-cstdint.patch
+%endif
+Patch0:         0001-cstdint.patch
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 Patch2:          Use-system-stb-glm.patch
+Patch3:		 gamescope-openmandriva-wlroots-0.20.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -53,8 +58,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libinput)
-# Upstream decided to fork wlroots and use unstable ver. 0.18! So we need to pull subproject
-#BuildRequires:  pkgconfig(wlroots)
+BuildRequires:  pkgconfig(wlroots-0.20)
 BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
@@ -89,11 +93,13 @@ tar xf %{SOURCE2}
 mv reshade-696b14cd6006ae9ca174e6164450619ace043283 reshade
 popd
 
+%if %{with wlroots}
 pushd subprojects
 rm -rf wlroots
 tar xf %{SOURCE3}
 mv wlroots-c08d99437ec8bb56a703f04ad1ef199502c62d10 wlroots
 popd
+%endif
 
 %autopatch -p1
 
@@ -105,6 +111,8 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 #sed -i '\/force_fallback/d' meson.build # NO!
 #sed -i '/force_fallback_for/s/libliftoff,//' meson.build
 
+# Needed as of Clang 23 RC:  error: module declaration must not come from an #include directive 342 | module _module;
+export CXXFLAGS="%{optflags} -fno-cxx-modules"
 %meson   \
           -Dpipewire=enabled \
           -Denable_openvr_support=false
