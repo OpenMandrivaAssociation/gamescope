@@ -110,6 +110,8 @@ sed -i 's^../thirdparty/SPIRV-Headers/include/spirv/^/usr/include/spirv/^' src/m
 #sed -i '\/stb/d' meson.build
 #sed -i '\/force_fallback/d' meson.build # NO!
 #sed -i '/force_fallback_for/s/libliftoff,//' meson.build
+
+# Needed as of Clang 23 RC:  error: module declaration must not come from an #include directive 342 | module _module;
 export CXXFLAGS="%{optflags} -fno-cxx-modules"
 %meson   \
           -Dpipewire=enabled \
