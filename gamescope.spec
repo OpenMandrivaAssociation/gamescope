@@ -1,14 +1,19 @@
 %bcond_with wlroots
 
 Name:           gamescope
+<<<<<<< Updated upstream
 Version:        3.16.25
 Release:        2
+=======
+Version:        3.17.0
+Release:        1
+>>>>>>> Stashed changes
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
 URL:            https://github.com/Plagman/gamescope
 Source0:        https://github.com/Plagman/gamescope/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540.tar.gz
+Source1:        https://github.com/Joshua-Ashton/vkroots/archive/vkroots-20733b938267dcac60f6ac105dbb757f9cc8df9c.tar.gz
 Source2:        https://github.com/Joshua-Ashton/reshade/archive/reshade-696b14cd6006ae9ca174e6164450619ace043283.tar.gz
 # As long as there are no problems, let's use wlroots from the system repository
 %if %{with wlroots}
@@ -84,7 +89,7 @@ meaning you get to see your frame quick even if the game already has the GPU bus
 pushd subprojects
 rm -rf vkroots
 tar xf %{SOURCE1}
-mv vkroots-5106d8a0df95de66cc58dc1ea37e69c99afc9540 vkroots
+mv vkroots-20733b938267dcac60f6ac105dbb757f9cc8df9c vkroots
 popd
 # Push in reshade from sources instead of submodule            
 pushd src
