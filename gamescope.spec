@@ -23,7 +23,7 @@ Patch0:         0001-cstdint.patch
 # No need to force submodules in case of libliftoff because version packaged by OMV is exactly same as puted into submodule
 Patch1:          no-submodule-for-libliftoff.patch
 Patch2:          Use-system-stb-glm.patch
-Patch3:		 gamescope-openmandriva-wlroots-0.20.patch
+#Patch3:		 gamescope-openmandriva-wlroots-0.20.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
