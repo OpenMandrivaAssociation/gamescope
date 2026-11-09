@@ -1,13 +1,8 @@
 %bcond_with wlroots
 
 Name:           gamescope
-<<<<<<< Updated upstream
-Version:        3.16.25
-Release:        2
-=======
 Version:        3.17.0
 Release:        1
->>>>>>> Stashed changes
 Summary:        SteamOS session compositing window manager
 Group:          System/Libraries
 License:        BSD
